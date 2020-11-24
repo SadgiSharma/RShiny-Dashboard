@@ -1,6 +1,6 @@
 # RShiny-Dashboard-
 
-Global File
+#Global File
 library(lubridate)
 
 data<- read.csv("coviddata.csv")
@@ -8,7 +8,7 @@ data<- read.csv("coviddata.csv")
 data$date <-month(ymd(data$date), label = TRUE, abbr = FALSE)
 
 
-Server File
+#Server File
 library(shiny)
 library(plotly)
 library(scales)
@@ -58,7 +58,7 @@ function(input, output) {
   
 }
 
-UI File
+#UI File
 library(shiny)
 library(lubridate)
 library(DT)
@@ -68,7 +68,7 @@ names(data)[which(names(data)=="date")]<-"MONTH"
 fluidPage(
   titlePanel("Covid DataTable"),
   
-  # Create a new Row in the UI for selectInputs
+  
   fluidRow(
     column(4,
            selectInput("mon",
@@ -84,7 +84,7 @@ fluidPage(
            ),
     )
   ),
-  # Create a new row for the table.
+  
   DT::dataTableOutput("table"),
   plotlyOutput("plot")
 )
